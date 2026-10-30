@@ -1,8 +1,11 @@
+
 const express = require('express');
 const cors = require('cors');
 
 const app = express();
+
 app.use(cors());
+app.use(express.json());
 
 const recetas = [
     { id: 1, nombre: 'Tacos de carne asada', tiempo: '40 min', ingredientes: 'Carne, tortillas, cebolla, cilantro, limón' },
@@ -21,4 +24,7 @@ app.get('/api/recetas', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log('Servidor en puerto ' + PORT));
+
+app.listen(PORT, '0.0.0.0', () => {
+    console.log('Servidor en puerto ' + PORT);
+});
